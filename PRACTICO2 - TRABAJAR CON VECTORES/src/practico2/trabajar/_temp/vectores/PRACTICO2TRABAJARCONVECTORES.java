@@ -61,7 +61,7 @@ public class PRACTICO2TRABAJARCONVECTORES {
         p.ver(vec.muestropospares(v).resultado, Retorno.Resultado.IMPLEMENTADA, "Numeros en posiciones pares " + vec.muestropospares(v).valorString);
         
         //Ejercicio 10
-        
+        p.ver(vec.ordenarvec(v).resultado, Retorno.Resultado.IMPLEMENTADA, "Ordenado " + vec.ordenarvec(v).valorString);
         
         
         //Ejercicio 11
