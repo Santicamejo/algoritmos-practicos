@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package practico2.trabajar.con.vectores;
+package practico2.trabajar._temp.vectores;
 
 //import tarea0.Retorno.Resultado;
-import practico2.trabajar.con.vectores.Retorno.Resultado;
-import static practico2.trabajar.con.vectores.Retorno.Resultado.NO_IMPLEMENTADA;
+import practico2.trabajar._temp.vectores.Retorno;
+import practico2.trabajar._temp.vectores.Retorno.Resultado;
+import static practico2.trabajar._temp.vectores.Retorno.Resultado.NO_IMPLEMENTADA;
 
 public class Prueba {
 
