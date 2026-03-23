@@ -132,4 +132,7 @@ public interface IVectores {
 //Ejercicio 12 
     public Retorno mayoresV(int[] v);
 
+    //Ejercicio 13 ordenar vector
+    
+    public Retorno ordenarPorMaximoMinimo(int[] v);
 }

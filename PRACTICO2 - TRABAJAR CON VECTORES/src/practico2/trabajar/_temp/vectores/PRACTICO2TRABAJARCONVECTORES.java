@@ -68,7 +68,11 @@ public class PRACTICO2TRABAJARCONVECTORES {
         
         //Ejercicio 12
         
-        p.imprimirResultadosPrueba();
+        
+        //13 Ordenar Vector max-min
+        System.out.println("Vector original: " + java.util.Arrays.toString(v));
+        p.ver(vec.ordenarPorMaximoMinimo(v).resultado, Retorno.Resultado.IMPLEMENTADA, "Numeros en posiciones pares " + vec.ordenarPorMaximoMinimo(v).valorString);
+
     }
 
 }

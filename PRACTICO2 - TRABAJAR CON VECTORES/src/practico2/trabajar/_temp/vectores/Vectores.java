@@ -65,7 +65,7 @@ public class Vectores implements IVectores {
         
         return ret;
     }
-
+    //El vector no es vacio y esta ordenado
     @Override
     public Retorno minvecV2(int[] v) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
@@ -75,6 +75,7 @@ public class Vectores implements IVectores {
         return ret;
     }
 
+    //El vector no es vacio y no esta ordenado.
     @Override
     public Retorno maxvecV1(int[] v, int desde, int hasta) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
@@ -89,6 +90,7 @@ public class Vectores implements IVectores {
         return ret;
     }
 
+    //El vector no es vacio y no esta ordenado
     @Override
     public Retorno minvecV1(int[] v, int desde, int hasta) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
@@ -103,10 +105,11 @@ public class Vectores implements IVectores {
         return ret;
     }
 
+    //El vector no es vacio y esta ordenado
     @Override
     public Retorno maxvecV2(int[] v, int desde, int hasta) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
-        // Aquí iría la lógica del mínimo v2
+        
         return ret;
     }
 
@@ -123,7 +126,7 @@ public class Vectores implements IVectores {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
         ret.valorEntero = desde;
         
-        for(int i = desde +1; i<= hasta; i++){
+        for(int i = desde;i<hasta;i++){
             if(v[i] > v[ret.valorEntero]){
                 ret.valorEntero = i;
             }
@@ -131,12 +134,13 @@ public class Vectores implements IVectores {
         return ret;
     }
 
+    //El vector no es vecio y esta desordenado.
     @Override
     public Retorno posminvecV1(int[] v, int desde, int hasta) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
         ret.valorEntero = desde;
         
-        for(int i = desde +1; i<= hasta; i++){
+        for(int i = desde; i<= hasta; i++){
             if(v[i] < v[ret.valorEntero]){
                 ret.valorEntero = i;
             }
@@ -145,7 +149,7 @@ public class Vectores implements IVectores {
         return ret;
     }
 
-    
+    //El vector no es vacio y esta ordenado.
     @Override
     public Retorno posmaxvecV2(int[] v, int desde, int hasta) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
@@ -164,6 +168,7 @@ public class Vectores implements IVectores {
     
     
     //Ejercicio 6
+    //Desordenado
     @Override
     public Retorno buscarvecV1(int[] v, int elemento) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
@@ -182,16 +187,19 @@ public class Vectores implements IVectores {
         return ret;
     }
 
+    //Desordenado
     @Override
     public Retorno buscarvecV1(int[] v, int elemento, int desde, int hasta) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
         
         ret.valorbooleano = false;
+        ret.valorEntero = -1;
         int i = desde;
         
         while(i<hasta && !ret.valorbooleano){
             if(v[i] == elemento){
                 ret.valorbooleano = true;
+                ret.valorEntero = i;
             }
             i++;
         }
@@ -199,18 +207,18 @@ public class Vectores implements IVectores {
         return ret;    
     }
 
-    
+    //Ordenado
     @Override
     public Retorno buscarvecV2(int[] v, int elemento) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
         
-        ret.valorEntero = -1;
+        ret.valorbooleano = false;
         int i = 0;
         int largo = v.length;
         
-        while(i<largo && ret.valorEntero == -1){
+        while(i<largo && !ret.valorbooleano && v[i] < elemento){
             if(v[i] == elemento){
-                ret.valorEntero = i;
+                ret.valorbooleano = true;
             }
             i++;
         }
@@ -218,6 +226,7 @@ public class Vectores implements IVectores {
         return ret;
     }
 
+    //Ordenado
     @Override
     public Retorno buscarvecV2(int[] v, int elemento, int desde, int hasta) {
         Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
@@ -226,7 +235,7 @@ public class Vectores implements IVectores {
         int i = desde;
         
         
-        while(i<=hasta && ret.valorEntero == -1){
+        while(i<=hasta && ret.valorEntero == -1 && v[i] < elemento){
             if(v[i] == elemento){
                 ret.valorEntero = i;
             }
@@ -367,16 +376,13 @@ public class Vectores implements IVectores {
 // Ejercicio 10    
     @Override
     public Retorno ordenarvec(int[] v) {
-        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);        
         
         ret.valorString = "";
         int largo = v.length;
         
         for(int i = 0; i<largo-1; i++){
             for(int j = 0;j==largo-1;j++){
-                if(v[j]>){
-                    
-                }
             }
         }
         
@@ -400,5 +406,34 @@ public class Vectores implements IVectores {
     }
 
     
+    @Override
+    public Retorno ordenarPorMaximoMinimo(int[] v) {
+        Retorno ret = new Retorno(Retorno.Resultado.IMPLEMENTADA);
+
+        int posValorMinimo, posValorMaximo, aux;
+        int i = 0;
+        int j = v.length-1;
+        
+        while(i<j){
+        
+            posValorMaximo = posmaxvecV1(v, i, j).valorEntero;
+            aux = v[j];
+            v[j] = v[posValorMaximo];
+            v[posValorMaximo] = aux;
+        
+            posValorMinimo = posminvecV1(v, i, j).valorEntero;
+            aux = v[i];
+            v[i] = v[posValorMinimo];
+            v[posValorMinimo] = aux;
+        
+            i++;
+            j--;
+        
+        }
+        
+        ret.valorString = mostrarv(v).valorString;
+
+        return ret;    
+    }
 }
 
